@@ -1,11 +1,10 @@
-
 #Example usage of very basic R script to proform t tests and add significance bars to plots
 
 data <- read.csv("data.csv") #read in data (example data is data.csv file)
 boxplot(data, frame.plot = FALSE, xaxt = 'n') #plot data without boarders
 axis(side=1,a=1:length(data),labels = colnames(data))
 
-#uncomment next two lines to show indevidual values
+#uncomment next two lines to show individual values
 #install.packages('beeswarm')
 #beeswarm(data,add=T, corral = 'omit', pch = 20) 
 
@@ -16,7 +15,7 @@ Add_Labels <- function(data)
   comparison_df <- data.frame(matrix(ncol=3,nrow=0)); 
   colnames(comparison_df) <- c('condition1','condition2','pvalue') 
   
-  #H store the y value to put lines and text
+  # vector "H" stores the y value to put lines and text
   H <- vector()
   
   # for every value in data, t.test each other element in dataset. (Side note: t.test is used for simple functionality make sure the statistical test you use works for your dataset)
@@ -24,8 +23,7 @@ Add_Labels <- function(data)
   {
     for(j in 1:length(data))
     {
-      condition1 <- names(data[i])
-      condition2 <- names(data[j])
+      condition1 <- names(data[i]); condition2 <- names(data[j])
       sig <- t.test(data[i],data[j])$p.value #getting p-value for each comparison 
       comparison_df <- rbind(comparison_df,c(condition1,condition2,sig)) #storing comparisons into dataframe
       
