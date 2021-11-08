@@ -6,6 +6,7 @@ axis(side=1,a=1:length(data),labels = colnames(data))
 
 #uncomment next two lines to show individual values
 #install.packages('beeswarm')
+#library(beeswarm)
 #beeswarm(data,add=T, corral = 'omit', pch = 20) 
 
 # start function
